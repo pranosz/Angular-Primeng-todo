@@ -16,12 +16,25 @@ stages:
       - job: build_and_test
         displayName: Build and test
         steps:
+
         - task: NodeTool@0
           inputs:
            versionSpec: '20.x'
           displayName: 'Install Node.js'
-        - script: |
-            npm install -g @angular/cli
-            npm install
-            ng build --prod
-          displayName: 'npm install and build'
+
+        - task: Npm@1
+          inputs:
+            command: 'install'
+          displayName: "npm install"
+
+        - task: Npm@1
+          inputs:
+            command: custom
+            customCommand: 'run build'
+          displayName: "Build Angular app"
+
+        - task: Npm@1
+          inputs:
+            command: custom
+            customCommand: 'run test'
+          displayName: "Test Angular app"
