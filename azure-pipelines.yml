@@ -8,7 +8,7 @@ name: AngularToDoList
 trigger: [main]
 
 pool:
-  name: DESKTOP-4F7462F
+  name: Default
 
 stages:
     - stage: Build
