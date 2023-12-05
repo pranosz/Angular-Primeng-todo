@@ -38,3 +38,11 @@ stages:
             command: custom
             customCommand: 'run test'
           displayName: "Test Angular app"
+
+        - script: |
+          mkdir $(Build.ArtifactStagingDirectory)\\dist
+          xcopy "dist\\sample-app" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
+        displayName: Copy dist contents
+
+        - task: PublishBuildArtifacts@1
+        displayName: "Publish Artifact"
