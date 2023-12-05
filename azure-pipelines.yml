@@ -8,7 +8,7 @@ name: AngularToDoList
 trigger: [main]
 
 pool:
-  vmImage: ubuntu-latest
+  name: DESKTOP-4F7462F
 
 stages:
     - stage: Build
