@@ -8,7 +8,7 @@ name: AngularToDoList
 trigger: [main]
 
 pool:
-  name: Default
+  name: windows-latest
 
 stages:
     - stage: Build
