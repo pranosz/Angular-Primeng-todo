@@ -5,7 +5,7 @@
 
 name: AngularToDoList
 
-trigger: [main]
+trigger: [main, azure-pipelines]
 
 pool:
   vmImage: 'windows-latest'
