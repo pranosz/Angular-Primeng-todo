@@ -1,7 +1,3 @@
-# Node.js with Angular
-# Build a Node.js project that uses Angular.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 name: AngularToDoList
 
@@ -30,6 +26,12 @@ stages:
         - task: Npm@1
           inputs:
             command: custom
+            customCommand: 'run lint'
+          displayName: "Lint"
+
+        - task: Npm@1
+          inputs:
+            command: custom
             customCommand: 'run build'
           displayName: "Build Angular app"
 
@@ -44,11 +46,3 @@ stages:
             PathtoPublish: 'dist/angular-primeng-todo'
             ArtifactName: 'app'
             publishLocation: 'Container'
-
- #       - script: |
- #        mkdir $(Build.ArtifactStagingDirectory)\\dist
- #         xcopy "dist\\sample-app" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
- #       displayName: Copy dist contents
- #
- #       - task: PublishBuildArtifacts@1
- #       displayName: "Publish Artifact"
