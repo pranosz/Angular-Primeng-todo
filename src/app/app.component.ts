@@ -7,7 +7,7 @@ import { FormBuilder, FormArray } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'angular-primeng-todo';
+  title = 'angular-primeng-todo-list';
   /*
   todos = [
     {
