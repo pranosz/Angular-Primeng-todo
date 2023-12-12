@@ -29,6 +29,12 @@ stages:
             customCommand: 'run lint'
           displayName: "Lint"
 
+#        - task: Npm@1
+#          inputs:
+#            command: custom
+#            customCommand: 'npm audit --audit-level=high'
+#          displayName: "Audit node packages"
+
         - task: Npm@1
           inputs:
             command: custom
