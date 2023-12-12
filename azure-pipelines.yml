@@ -32,6 +32,12 @@ stages:
         - task: Npm@1
           inputs:
             command: custom
+            customCommand: 'npm audit --audit-level=low'
+          displayName: "Audit node packages"
+
+        - task: Npm@1
+          inputs:
+            command: custom
             customCommand: 'run build'
           displayName: "Build Angular app"
 
