@@ -5,7 +5,12 @@
   "projects": {
     "angular-primeng-todo": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+				"@schematics/angular:component": {
+					"changeDetection": "OnPush",
+          "style": "scss"
+				}
+			},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -107,6 +112,10 @@
   },
   "cli": {
     "analytics": false,
+    "cache": {
+      "enabled": true,
+      "environment": "all"
+    },
     "schematicCollections": [
       "@angular-eslint/schematics"
     ]
