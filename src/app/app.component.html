@@ -1,10 +1,8 @@
 <div class="flex flex-column align-items-center justify-content-center">
     <button pButton type="button" label="Add task" (click)="addTask()"></button>
-    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
         <p-card header="Todo" class="w-6">
           
-                <div formArrayName="tasks">
-                    <p-table [value]="tasks.controls">
+                    <p-table [value]="service.tasks()">
 
                         <ng-template pTemplate="header">
                             <tr>
@@ -14,27 +12,23 @@
                             </tr>
                         </ng-template>
                         
-                        <ng-template pTemplate="body" let-todo>
+                        <ng-template pTemplate="body" let-task>
                             <tr>
-                                <td>{{ todo.controls['task'].value }}</td>
+                                <td>{{ task.name }}</td>
                                 <td>
                                     <p-checkbox 
-                                    [formControlName]="todo.controls['id'].value" 
-                                    value="todo.controls['completed'].value" 
-                                    inputId="todo.controls['id'].value"
+                                        [binary]="true"
+                                        [(ngModel)]="task.completed"
                                     >
                                 </p-checkbox>
                                 </td>
                                 <td>
-                                    <p-button icon="pi pi-trash" severity="danger"></p-button>
+                                    <p-button icon="pi pi-trash" severity="danger" (click)="deleteTask(task.id)"></p-button>
                                 </td>
                             </tr>
                         </ng-template>
                         
                     </p-table>
-                </div>
-           
+
         </p-card>
-        <button pButton type="submit" label="Submit"></button>
-    </form>
 </div>
