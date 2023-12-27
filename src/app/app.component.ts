@@ -10,15 +10,6 @@ import { TaskService } from './services/task.service';
 export class AppComponent {
   title = 'angular-primeng-todo';
 
-  private taskService = inject(TaskService);
-  service = this.taskService;
-
-  addTask() {
-    this.taskService.addNewTask();
-  }
-
-  deleteTask(id: string): void {
-    this.taskService.deleteTask(id);
-  }
+  taskService = inject(TaskService);
 
 }

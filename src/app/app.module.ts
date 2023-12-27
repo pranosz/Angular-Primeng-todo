@@ -6,10 +6,22 @@ import { TableModule } from 'primeng/table';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogService } from 'primeng/dynamicdialog';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { TodoTaskComponent } from './todo-task/todo-task.component';
+import { TodoAddNewTaskComponent } from './todo-add-new-task/todo-add-new-task.component';
+import { TodoFooterComponent } from './todo-footer/todo-footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodoTaskComponent,
+    TodoAddNewTaskComponent,
+    TodoFooterComponent
   ],
   imports: [
     BrowserModule,
@@ -18,9 +30,13 @@ import { ButtonModule } from 'primeng/button';
     CheckboxModule,
     FormsModule,
     ReactiveFormsModule,
-    ButtonModule
+    BrowserAnimationsModule,
+    ButtonModule,
+    ConfirmDialogModule,
+    DialogModule,
+    InputTextModule
   ],
-  providers: [],
+  providers: [ConfirmationService, MessageService, DialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
