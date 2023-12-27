@@ -1,0 +1,19 @@
+    <td *ngIf="!task.isEditMode">{{ task.name }}</td>
+    <td *ngIf="task.isEditMode">
+        <input type="text" pInputText [(ngModel)]="task.name" />
+        <p-button icon="pi pi-check" severity="success" (click)="comfirmEditedName(task)"></p-button>
+    </td>
+    <td>
+        <p-checkbox 
+            [binary]="true"
+            [(ngModel)]="task.completed"
+            (onChange)="onChangeTaskStatus(task)"
+        >
+        </p-checkbox>
+    </td>
+    <td>
+        <p-button icon="pi pi-file-edit" severity="info" (click)="editTask(task.id)"></p-button>
+    </td>
+    <td>
+        <p-button icon="pi pi-trash" severity="danger" (click)="deleteTask($event, task.id)"></p-button>
+    </td>

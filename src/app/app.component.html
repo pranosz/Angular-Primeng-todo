@@ -1,34 +1,26 @@
 <div class="flex flex-column align-items-center justify-content-center">
-    <button pButton type="button" label="Add task" (click)="addTask()"></button>
+    <app-todo-add-new-task></app-todo-add-new-task>
         <p-card header="Todo" class="w-6">
-          
-                    <p-table [value]="service.tasks()">
+                    <p-table [value]="taskService.tasks()">
 
                         <ng-template pTemplate="header">
                             <tr>
                                 <th width="60%">Task</th>
                                 <th>Completed</th>
                                 <th width="5%"></th>
+                                <th width="5%"></th>
                             </tr>
                         </ng-template>
                         
                         <ng-template pTemplate="body" let-task>
-                            <tr>
-                                <td>{{ task.name }}</td>
-                                <td>
-                                    <p-checkbox 
-                                        [binary]="true"
-                                        [(ngModel)]="task.completed"
-                                    >
-                                </p-checkbox>
-                                </td>
-                                <td>
-                                    <p-button icon="pi pi-trash" severity="danger" (click)="deleteTask(task.id)"></p-button>
-                                </td>
-                            </tr>
+                            <app-todo-task [task]="task"></app-todo-task>
                         </ng-template>
                         
+                        <ng-template pTemplate="footer">
+                            <app-todo-footer></app-todo-footer>
+                        </ng-template>
                     </p-table>
-
         </p-card>
 </div>
+
+<p-confirmDialog></p-confirmDialog>
