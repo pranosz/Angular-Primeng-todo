@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 
-fdescribe('TodoTaskComponent', () => {
+describe('TodoTaskComponent', () => {
   let component: TodoTaskComponent;
   let fixture: ComponentFixture<TodoTaskComponent>;
   let el: DebugElement;

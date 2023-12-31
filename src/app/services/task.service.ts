@@ -17,6 +17,7 @@ export class TaskService {
   });
 
   getAllTasks(): Task[] {
+    console.log("service 333");
     return this.storage.getTasks('tasks');
   }
 
