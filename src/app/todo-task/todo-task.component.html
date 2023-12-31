@@ -1,7 +1,7 @@
-    <td *ngIf="!task.isEditMode">{{ task.name }}</td>
-    <td *ngIf="task.isEditMode">
-        <input type="text" pInputText [(ngModel)]="task.name" />
-        <p-button icon="pi pi-check" severity="success" (click)="comfirmEditedName(task)"></p-button>
+    <td id="nameField-{{task.id}}" *ngIf="!task.isEditMode">{{ task.name }}</td>
+    <td id="editNameField-{{task.id}}" *ngIf="task.isEditMode">
+        <input id="editInput-{{task.id}}" type="text" pInputText [(ngModel)]="task.name" />
+        <p-button id="confirmButton-{{task.id}}" icon="pi pi-check" severity="success" (click)="comfirmEditedName(task)"></p-button>
     </td>
     <td>
         <p-checkbox 
