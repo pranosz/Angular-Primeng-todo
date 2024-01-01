@@ -1,4 +1,4 @@
-import { Injectable, signal, effect, computed, inject } from '@angular/core';
+import { Injectable, signal, effect, computed, inject, Signal } from '@angular/core';
 import { Task } from '../models/task.interface';
 import { StorageService } from './storage.service';
 
@@ -16,7 +16,7 @@ export class TaskService {
     this.storage.setTasks('tasks', this.tasks());
   });
 
-  getAllTasks(): Task[] {
+  private getAllTasks(): Task[] {
     return this.storage.getTasks('tasks');
   }
 
