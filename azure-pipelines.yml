@@ -43,8 +43,7 @@ stages:
 
         - task: Npm@1
           inputs:
-            command: 'custom'
-            workingDir: 'Angular-PrimeNG-TodoList'
+            command: custom
             customCommand: 'run test'
           displayName: "Test Angular app"
 
