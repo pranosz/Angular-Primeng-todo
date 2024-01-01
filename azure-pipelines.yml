@@ -44,7 +44,8 @@ stages:
         - task: Npm@1
           inputs:
             command: custom
-            customCommand: 'run test'
+            customCommand: run test -- --watch=false --code-coverage
+            # workingDir: '$(System.DefaultWorkingDirectory)/frontend'
           displayName: "Test Angular app"
 
         - task: PublishBuildArtifacts@1
