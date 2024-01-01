@@ -43,8 +43,9 @@ stages:
 
         - task: Npm@1
           inputs:
-            command: custom
-            customCommand: 'ng test'
+            command: 'custom'
+            workingDir: 'Angular-PrimeNG-TodoList'
+            customCommand: 'run test'
           displayName: "Test Angular app"
 
         - task: PublishBuildArtifacts@1
