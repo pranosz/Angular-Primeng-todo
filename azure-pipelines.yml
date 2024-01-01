@@ -44,7 +44,7 @@ stages:
         - task: Npm@1
           inputs:
             command: custom
-            customCommand: 'run test'
+            customCommand: 'ng test'
           displayName: "Test Angular app"
 
         - task: PublishBuildArtifacts@1
