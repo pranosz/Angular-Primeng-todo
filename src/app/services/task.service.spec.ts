@@ -6,7 +6,7 @@ import { TASKS } from '../tests-utils/mock-data';
 import { Task } from '../models/task.interface';
 import { signal } from '@angular/core';
 
-fdescribe('TaskServiceService', () => {
+describe('TaskServiceService', () => {
   let service: TaskService;
   let storageServiceSpy: any;
 
