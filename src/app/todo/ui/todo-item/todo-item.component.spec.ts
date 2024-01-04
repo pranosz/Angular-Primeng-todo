@@ -1,26 +1,24 @@
-import { ComponentFixture, TestBed, fakeAsync, flush, waitForAsync } from '@angular/core/testing';
-import { TodoTaskComponent } from './todo-task.component';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ButtonModule } from 'primeng/button';
-import { Task } from '../models/task.interface';
 import { FormsModule } from '@angular/forms';
-import { DebugElement } from '@angular/core';
+import { DebugElement} from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
+import { TodoItemComponent } from './todo-item.component';
+import { Task } from 'src/app/models/task.interface';
 
-describe('TodoTaskComponent', () => {
-  let component: TodoTaskComponent;
-  let fixture: ComponentFixture<TodoTaskComponent>;
+describe('TodoItemComponent', () => {
+  let component: TodoItemComponent;
+  let fixture: ComponentFixture<TodoItemComponent>;
   let el: DebugElement;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [TodoTaskComponent],
+      declarations: [TodoItemComponent],
       imports: [
         CheckboxModule,
-        TableModule,
         ButtonModule,
         FormsModule,
         InputTextModule
@@ -29,20 +27,19 @@ describe('TodoTaskComponent', () => {
         ConfirmationService,
         MessageService
       ]
-    }).compileComponents()
-    .then(() => {
+    })
       const task: Task = {
         id: "1",
         name: "test task",
         completed: false
       };
   
-      fixture = TestBed.createComponent(TodoTaskComponent);
+      fixture = TestBed.createComponent(TodoItemComponent);
       component = fixture.componentInstance;
       el = fixture.debugElement;
       component.task = task;
       fixture.detectChanges();
-    });
+
   }));
 
   it('should create', () => {
@@ -50,7 +47,7 @@ describe('TodoTaskComponent', () => {
   });
 
   it('should contain name', () => {
-    const tdElement = el.query(By.css("#nameField-1"));
+    const tdElement = el.query(By.css('[data-testid="nameField"]'));
     const text = tdElement.nativeElement.innerText;
 
     expect(text).toContain("test task");
@@ -75,7 +72,7 @@ describe('TodoTaskComponent', () => {
 
   });
 
-  it('should show input field after selecting edit button', () => {
+  it('should show input field and button when task have edit mode set to true', () => {
     component.task = {
       id: "1",
       name: "test task",
@@ -85,33 +82,19 @@ describe('TodoTaskComponent', () => {
 
     fixture.detectChanges();
     
-    const primeInput = el.query(By.css("#editInput-1"));
+    const primeInput = el.query(By.css('[data-testid="editInput"]'));
+
+    const tdNameElement = el.query(By.css('[data-testid="nameField"]'));
+    const editElement = el.query(By.css('[data-testid="editNameField"]'));
+    const buttonConfirm = el.query(By.css('[data-testid="comfirm-edit-task-button"]'));
+
+    expect(tdNameElement).toBeNull();
+    expect(editElement).toBeTruthy();
+    expect(buttonConfirm).toBeTruthy();
   
     expect(primeInput.nativeElement).toBeTruthy();
     expect(primeInput.nativeElement.className).toContain('p-inputtext');
     expect(primeInput.nativeElement.className).toContain('p-component');
   });
-
-  it('should display input field and button in edit mode', fakeAsync(() => {
-    component.task = {
-      id: "1",
-      name: "test task",
-      completed: false,
-      isEditMode: true
-    };
-    
-    fixture.detectChanges();
-    flush();
-    
-    const tdNameElement = el.query(By.css("#nameField-1"));
-    const editElement = el.query(By.css("#editNameField-1"));
-    const buttonConfirm = el.query(By.css("#confirmButton-1"));
-
-    expect(tdNameElement).toBeNull();
-    expect(editElement).toBeTruthy();
-    expect(buttonConfirm).toBeTruthy();
-
-  }));
-
 
 });

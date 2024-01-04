@@ -1,9 +1,10 @@
-<button pButton type="button" label="Add task" (click)="showNewTaskPopup()"></button>
+<button data-testid="add-button" pButton type="button" label="Add task" (click)="showNewTaskPopup()"></button>
 
 <p-dialog header="Add new task" [(visible)]="visible" [style]="{width: '40vw'}">
-    <div class="flex flex-wrap justify-content-center gap-3">
+    <div data-testid="dialog" class="flex flex-wrap justify-content-center gap-3">
         <input type="text" pInputText [(ngModel)]="newTaskName" />
         <p-button 
+        data-testid="add-task-button"
         (click)="addTask()" 
         label="Add" pAutoFocus 
         [autofocus]="true"

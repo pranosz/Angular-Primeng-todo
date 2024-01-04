@@ -1,0 +1,36 @@
+<div class="flex flex-column align-items-center justify-content-center">
+    <app-todo-add-task (addNewTask)="addTask($event)"></app-todo-add-task>
+        <p-card header="Todo" class="w-6">
+                    <p-table [value]="taskService.tasks()">
+
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th width="60%">Task</th>
+                                <th>Completed</th>
+                                <th width="5%"></th>
+                                <th width="5%"></th>
+                            </tr>
+                        </ng-template>
+                        
+                        <ng-template pTemplate="body" let-task>
+                            <app-todo-item 
+                                [task]="task"
+                                (confirmNameChange)="comfirmEditedName($event)"
+                                (statusCompletedChange)="changeTaskStatus($event)"
+                                (editTask)="editTask($event)"
+                                (deleteTask)="deleteTask($event)"
+                            ></app-todo-item>
+                        </ng-template>
+                        
+                        <ng-template pTemplate="footer">
+                            <app-todo-footer
+                                [allTasksNum]="taskService.countAllTasks()"
+                                [activeTasksNum]="taskService.countActiveTasks()"
+                                [completedTasksNum]="taskService.countCompletedTasks()"
+                            ></app-todo-footer>
+                        </ng-template>
+                    </p-table>
+        </p-card>
+</div>
+
+<p-confirmDialog></p-confirmDialog>

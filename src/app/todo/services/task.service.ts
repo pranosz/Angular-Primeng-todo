@@ -1,5 +1,5 @@
 import { Injectable, signal, effect, computed, inject, Signal } from '@angular/core';
-import { Task } from '../models/task.interface';
+import { Task } from '../../models/task.interface';
 import { StorageService } from './storage.service';
 
 @Injectable({

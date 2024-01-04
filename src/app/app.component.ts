@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { TaskService } from './services/task.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,4 @@ import { TaskService } from './services/task.service';
 })
 export class AppComponent {
   title = 'angular-primeng-todo';
-
-  taskService = inject(TaskService);
-
 }

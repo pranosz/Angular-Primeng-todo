@@ -1,25 +1,24 @@
-import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
-import { Task } from '../models/task.interface';
-import { TaskService } from '../services/task.service';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { TaskService } from 'src/app/todo/services/task.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Task } from 'src/app/models/task.interface';
+import { DeleteTask } from 'src/app/models/delete-task.interface';
 
 @Component({
-  selector: 'app-todo-task',
-  templateUrl: './todo-task.component.html',
-  styleUrls: ['./todo-task.component.scss'],
+  selector: 'app-todo-tasks',
+  templateUrl: './todo-tasks.component.html',
+  styleUrls: ['./todo-tasks.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TodoTaskComponent {
+export class TodoTasksComponent {
 
   taskService = inject(TaskService);
   private confirmationService = inject(ConfirmationService);
   private messageService = inject(MessageService);
 
-  @Input({required: true}) task!: Task;
-
-  deleteTask(event: Event, id: string): void {
+  deleteTask(deleteItem: DeleteTask): void {
     this.confirmationService.confirm({
-      target: event.target as EventTarget,
+      target: deleteItem.event.target as EventTarget,
       message: 'Do you want to delete this record?',
       header: 'Delete Confirmation',
       icon: 'pi pi-info-circle',
@@ -35,7 +34,7 @@ export class TodoTaskComponent {
           detail: 'Record deleted',
         });
 
-        this.taskService.deleteTask(id);
+        this.taskService.deleteTask(deleteItem.id);
       },
       reject: () => {
         this.messageService.add({
@@ -60,8 +59,11 @@ export class TodoTaskComponent {
     this.taskService.editTask(task);   
   }
 
-  onChangeTaskStatus(task: Task): void {
+  changeTaskStatus(task: Task): void {
     this.taskService.editTask(task);  
   }
 
+  addTask(name: string): void {
+    this.taskService.addNewTask(name);
+  }
 }

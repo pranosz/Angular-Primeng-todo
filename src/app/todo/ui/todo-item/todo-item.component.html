@@ -1,0 +1,20 @@
+<td data-testid="nameField" *ngIf="!task.isEditMode">{{ task.name }}</td>
+<td data-testid="editNameField" *ngIf="task.isEditMode">
+    <input data-testid="editInput" type="text" pInputText [(ngModel)]="task.name" />
+    <p-button data-testid="comfirm-edit-task-button" icon="pi pi-check" severity="success" (click)="onComfirmEditedName(task)"></p-button>
+</td>
+<td>
+    <p-checkbox 
+        data-testid="checkbox-completed"
+        [binary]="true"
+        [(ngModel)]="task.completed"
+        (onChange)="onChangeTaskStatus(task)"
+    >
+    </p-checkbox>
+</td>
+<td>
+    <p-button data-testid="edit-task-button" icon="pi pi-file-edit" severity="info" (click)="onEditTask(task.id)"></p-button>
+</td>
+<td>
+    <p-button data-testid="delete-task-button" icon="pi pi-trash" severity="danger" (click)="onDeleteTask($event, task.id)"></p-button>
+</td>

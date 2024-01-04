@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 
 import { TaskService } from './task.service';
 import { StorageService } from './storage.service';
-import { TASKS } from '../tests-utils/mock-data';
-import { Task } from '../models/task.interface';
+import { TASKS } from '../../tests-utils/mock-data';
+import { Task } from '../../models/task.interface';
 import { signal } from '@angular/core';
 
 describe('TaskServiceService', () => {
