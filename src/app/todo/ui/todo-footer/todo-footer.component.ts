@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { TaskService } from '../services/task.service';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-todo-footer',
@@ -8,5 +7,7 @@ import { TaskService } from '../services/task.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoFooterComponent {
-  taskService = inject(TaskService);
+  @Input() allTasksNum!: number;
+  @Input() activeTasksNum!: number;
+  @Input() completedTasksNum!: number;
 }

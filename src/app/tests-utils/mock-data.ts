@@ -4,7 +4,7 @@ export const TASKS: Task[] = [
     {
         id: '1',
         name: 'task 1',
-        completed: false,
+        completed: false
     },
     {
         id: '2',
